@@ -1,0 +1,23 @@
+﻿body {
+}
+
+/*#login{
+
+    top:50px;
+    text-align:right;
+}*/
+.register {
+    top: 50px;
+    text-align: center;
+    visibility:hidden;
+}
+
+/*.divUpdate {
+    top: 50px;
+    text-align: center;
+    visibility: hidden;
+}
+*/
+
+
+

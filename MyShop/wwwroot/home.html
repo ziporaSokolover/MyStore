@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+
+    <link rel="stylesheet" type="text/css" href="home.css" />
+    <script defer src="home.js"></script>
+</head>
+<body dir="rtl">
+
+    
+    <div id="login">
+        <label>כתובת מייל</label>
+        <input id="loginEmail" type="email" />
+        <br />
+        <label>סיסמא</label>
+        <input id="loginPassword" type="password" />
+        <br />
+        <button onclick="Login()">התחברות</button>
+        <br />
+        <button onclick="showRegister()">משתמש חדש</button>
+    </div>
+
+    <div class="register">
+        <label>כתובת מייל</label>
+        <input id="registerEmail" type="email" />
+        <br />
+        <label>סיסמא</label>
+        <input onblur="cheakPassword()" id="registerPassword" placeholder="password" /><progress id="level" value="0" max="4"></progress>
+        
+        <br />
+        <label>שם פרטי</label>
+        <input id="registerFirstName" type="text" />
+        <br />
+        <label>שם משפחה</label>
+        <input id="registerLastName" type="text" />
+        <br />
+
+        <button onclick="register()">רישום</button>
+    </div>
+
+</body>
+</html>
