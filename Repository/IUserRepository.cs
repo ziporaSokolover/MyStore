@@ -8,7 +8,7 @@ using Entities;
 
 namespace Repositories
 {
-    internal interface IUserRepository
+    public interface IUserRepository
     {
          User Login(string email, string password);
          User Post(User user);

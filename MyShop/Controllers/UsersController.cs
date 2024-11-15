@@ -8,15 +8,16 @@ using Entities;
 //שרה שלום וברכה לא סימנו הפונקצית עדכון עדיין בעדכון:) והפונקצית כניסה לא עובדת לנו משום מה ישבנו על זה הרבה זמן נשמח אם תצליחי לעזור תודה רבה!!!!! יום טוב!!!
 namespace MyShop.Controllers
 {
-    
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
     {
-        UserService service;
+        IUserServices service;
 
-
-       
+        public UsersController(IUserServices service)
+        {
+            this.service = service;
+        }
         // GET: api/<UsersController>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -62,8 +63,6 @@ namespace MyShop.Controllers
             }
 
                        
-               
-            
             return NoContent();
 
 
@@ -75,7 +74,8 @@ namespace MyShop.Controllers
         public ActionResult<User> Put(int id, [FromBody] User user)
 
         {
-             user = service.Put(id, user);
+           
+            user = service.Put(id, user);
             if (user != null)
             {
                 return Ok(user);
@@ -86,6 +86,10 @@ namespace MyShop.Controllers
 
             return NoContent();
 
+
+            
+            
+            
         }
         // DELETE api/<UsersController>/5
         [HttpDelete("{id}")]

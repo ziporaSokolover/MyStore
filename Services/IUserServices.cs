@@ -7,7 +7,7 @@ using Entities;
 
 namespace Services
 {
-    internal interface IUserServices
+    public interface IUserServices
     {
 
          User Login(string email, string password);
