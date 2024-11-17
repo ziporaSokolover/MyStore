@@ -1,4 +1,10 @@
-﻿const GetDataFromUpDate = () => {
+﻿const level = document.getElementById("level");
+level.value = 0;
+
+
+
+
+const GetDataFromUpDate = () => {
 
     Email = document.getElementById("updateEmail").value,
         Password = document.getElementById("updatePassword").value,
@@ -13,30 +19,75 @@
 }
 
 const update = async () => {
-    try {
-        const id = sessionStorage.getItem("id")
-        const user = GetDataFromUpDate()
-        if (user) {
-            const responsePut = await fetch(`api/Users/${id}`, {
-                method: 'PUT',
+    if (level.value < 3)
+        alert("Password is too weak")
+    else {
+        try {
+            const id = sessionStorage.getItem("id")
+            const user = GetDataFromUpDate()
+            if (user) {
+                const responsePut = await fetch(`api/Users/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                });
+
+
+                alert("upDate successfully")
+            }
+        }
+        catch (Error) {
+            console.log('error:', Error)
+
+        }
+    }
+}
+    const getPassword = () => {
+        const Password = document.getElementById("updatePassword").value;
+        return Password;
+    }
+
+
+const cheakPassword = async () => {
+    const password = getPassword();
+    if (password) {
+        try {
+            const leavel = await fetch('api/Users/password', {
+                method: 'POST',
                 headers: {
-                    'content-Type': 'application/json'
+                    'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(user)
+                //fetch(`api/Users/login?email=${currentUser.Email}& password=${currentUser.Password}`, {
+                //             method: "POST",
+                //             headers: {
+                //                 'Content-Type': 'application/json'
+                //             },
+
+                body: JSON.stringify(password)
             });
 
 
-            alert("upDate successfully")
+            const dataPost = await leavel.json();
+            alert(dataPost);
+            updateLevel(dataPost)
+        }
+        catch {
+            console.log(err);
+
+
+
         }
     }
-    catch (Error) {
-        console.log('error:', Error)
-
-    }
-
-
- 
 }
+        const updateLevel = (dataPost) => {
+            const level = document.querySelector("#level")
+            level.value = dataPost
+
+
+        }
+    
 
 
 

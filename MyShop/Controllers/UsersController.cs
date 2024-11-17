@@ -36,7 +36,7 @@ namespace MyShop.Controllers
         [HttpPost]
         public ActionResult Post([FromBody] User user)
         {
-             user = service.Post(user);
+            user = service.Post(user);
             if (user != null)
             {
                 return Ok(user);
@@ -98,10 +98,12 @@ namespace MyShop.Controllers
         }
         [HttpPost("password")]
       
-        public int cheackPassword([FromBody] string password)
+        public IActionResult cheackPassword([FromBody] string password)
         {
             int result = service.cheackPassword(password);
-            return result;
+            return(result<3) ?
+                   BadRequest(result):
+            Ok( result);
         }
 
     }

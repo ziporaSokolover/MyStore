@@ -24,14 +24,27 @@ namespace Services
 
         public User Post(User user)
         {
-            return repository.Post(user);
+            if (cheackPassword(user.Password) > 2) { 
+                //return userRepository.AddUser(user);
+                 return repository.Post(user);}
+            else
+            {
+                return null;
+            }
         }
 
 
         public User Put(int id,  User user)
 
         {
-            return repository.Put(id,user);
+            if (cheackPassword(user.Password) > 2)
+            {
+                return repository.Put(id, user);
+            }
+            else
+            {
+                return null;
+            }
 
         }
         public int cheackPassword(string password)

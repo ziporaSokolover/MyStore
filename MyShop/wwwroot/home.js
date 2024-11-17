@@ -1,4 +1,7 @@
-﻿
+﻿const level = document.getElementById("level");
+level.value = 0;
+
+
 const showRegister = () => {
     const register1 = document.querySelector(".register");
     register1.classList.remove("register");
@@ -19,29 +22,33 @@ const getUserDetailsFromHtml = () => {
 }
 
 const register = async () => {
-    try {
-        const user = getUserDetailsFromHtml();
-        if (user) {
-            const registerPost = await fetch('api/Users', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+   /* const newUser = getAllDetilesForSignUp();*/
+    if (level.value < 3)
+        alert("Password is too weak")
+    else {
+        try {
+            const user = getUserDetailsFromHtml();
+            if (user) {
+                const registerPost = await fetch('api/Users', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
 
-                body: JSON.stringify(user)
+                    body: JSON.stringify(user)
+                }
+
+
+                );
+                const data = await registerPost.json()
+                console.log(data)
+
             }
-
-
-            );
-            const data = await registerPost.json()
-            console.log(data)
-
+        }
+        catch (Error) {
+            console.log(Error);
         }
     }
-    catch (Error) {
-        console.log(Error);
-    }
-
 }
     const currentUserDetailsFromHtml = () => {
         const Email = document.getElementById("loginEmail").value;
@@ -89,8 +96,10 @@ const cheakPassword = async () => {
 
         }
     }
+}
 
-    const Login = async () => {
+const Login = async () => {
+
 
         const currentUser = currentUserDetailsFromHtml();
         if (currentUser) {
@@ -135,4 +144,4 @@ const cheakPassword = async () => {
 
         }
     }
-}
+
