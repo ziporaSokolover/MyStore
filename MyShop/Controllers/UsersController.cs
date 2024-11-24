@@ -45,7 +45,7 @@ namespace MyShop.Controllers
 
 
 
-            return NoContent();
+            return NoContent();//BadRequest()
 
 
         }
