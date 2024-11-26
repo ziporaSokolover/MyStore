@@ -24,6 +24,7 @@ namespace Services
 
         public User Post(User user)
         {
+            //check password first
             return repository.Post(user);
         }
 
@@ -31,6 +32,7 @@ namespace Services
         public User Put(int id,  User user)
 
         {
+            //check password first
             return repository.Put(id,user);
 
         }

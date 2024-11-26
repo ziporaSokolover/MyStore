@@ -33,6 +33,10 @@ const register = async () => {
 
 
             );
+            //if status==400
+            //week password
+            //if !registerPost.ok
+            //error
             const data = await registerPost.json()
             console.log(data)
 

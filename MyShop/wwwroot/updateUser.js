@@ -24,7 +24,10 @@ const update = async () => {
                 },
                 body: JSON.stringify(user)
             });
-
+            //if status==400
+            //week password
+            //if !responsePut.ok
+            //error
 
             alert("upDate successfully")
         }
