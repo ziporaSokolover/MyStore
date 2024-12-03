@@ -10,9 +10,9 @@ namespace Repositories
 {
     public interface IUserRepository
     {
-         User Login(string email, string password);
-         User Post(User user);
-         User Put(int id, User user);
+        Task<User> Login(string email, string password);
+         Task<User> Post(User user);
+        Task<User> Put(int id, User user);
 
     }
 }

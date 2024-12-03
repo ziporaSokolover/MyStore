@@ -34,9 +34,9 @@ namespace MyShop.Controllers
 
         // POST api/<UsersController>
         [HttpPost]
-        public ActionResult Post([FromBody] User user)
+        public async Task<ActionResult> Post([FromBody] User user)
         {
-            user = service.Post(user);
+            user =await service.Post(user);
             if (user != null)
             {
                 return Ok(user);
@@ -54,9 +54,9 @@ namespace MyShop.Controllers
         [HttpPost]
         [Route("Login")]
 
-        public ActionResult Login([FromQuery] string email, [FromQuery] string password)
+        public async Task<ActionResult> Login([FromQuery] string email, [FromQuery] string password)
         {
-            User user=service.Login(email, password);
+            User user=await service.Login(email, password);
             if (user!=null)
             {
                 return Ok(user);
@@ -71,11 +71,11 @@ namespace MyShop.Controllers
 
         // PUT api/<UsersController>/5
         [HttpPut("{id}")]
-        public ActionResult<User> Put(int id, [FromBody] User user)
+        public async Task<ActionResult<User> >Put(int id, [FromBody] User user)
 
         {
            
-            user = service.Put(id, user);
+            user =await service.Put(id, user);
             if (user != null)
             {
                 return Ok(user);
