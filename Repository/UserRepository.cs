@@ -22,7 +22,7 @@ namespace Repositories
             this._ManagerDBcontext = context;
         }
 
-        const string filePath = "M:\\MyShopWithDB\\MyShop\\user.txt";
+        const string filePath = "M:\\MyShopWithDB\\MyShop\\user.txt";//
 
        
         public async Task<User> Login(string email, string password)
@@ -33,14 +33,16 @@ namespace Repositories
             return userFind;
 
             //}
-            return null;
+            return null;//
         }
 
 
         public async Task<User> Post(User user)
         {
+            //var res=  await _ManagerDBcontext.Users.AddAsync(user);
             await _ManagerDBcontext.Users.AddAsync(user);
             await _ManagerDBcontext.SaveChangesAsync();
+            //return res- the created user with the id
             return user ;
         }
 
