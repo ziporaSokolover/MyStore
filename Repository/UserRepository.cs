@@ -32,7 +32,7 @@ namespace Repositories
         {
             User userFind = await _ManagerDBcontext.Users.FirstOrDefaultAsync(user => user.Email == email && user.Password == password);
             if (userFind != null)
-                _logger.LogCritical($"login attempted with User Name:{userFind.FirstName} ,Email: {email} ");
+                _logger.LogCritical($"login attempted with User Name:{userFind.FirstName},Email:{email}");
             return userFind;
 
         }
