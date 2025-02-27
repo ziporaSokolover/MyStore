@@ -33,9 +33,15 @@ const update = async () => {
                     },
                     body: JSON.stringify(user)
                 });
-
-
-                alert("upDate successfully")
+                if (responsePut) {
+                    alert("upDate successfully")
+                    window.location.href = "Products.html"
+                }
+                else {
+                    alert("upDate Not successfully")
+                }
+                
+                
             }
         }
         catch (Error) {

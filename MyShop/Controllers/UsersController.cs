@@ -2,10 +2,11 @@
 using System.Text.Json;
 using Services;
 using Entities;
+using AutoMapper;
+using static DTO.UserDTO;
 
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-//שרה שלום וברכה לא סימנו הפונקצית עדכון עדיין בעדכון:) והפונקצית כניסה לא עובדת לנו משום מה ישבנו על זה הרבה זמן נשמח אם תצליחי לעזור תודה רבה!!!!! יום טוב!!!
+
 namespace MyShop.Controllers
 {
     [Route("api/[controller]")]
@@ -13,17 +14,14 @@ namespace MyShop.Controllers
     public class UsersController : ControllerBase
     {
         IUserServices service;
+        IMapper  _mapper;
 
-        public UsersController(IUserServices service)
+        public UsersController(IUserServices service, IMapper _mapper)
         {
             this.service = service;
+            this._mapper = _mapper;
         }
-        // GET: api/<UsersController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+       
 
         // GET api/<UsersController>/5
         [HttpGet("{id}")]
@@ -31,20 +29,15 @@ namespace MyShop.Controllers
         {
             return "value";
         }
-
-        // POST api/<UsersController>
+       
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] User user)
-        {
-            user =await service.Post(user);
-            if (user != null)
+        public async Task<ActionResult<ReturnPostUserDTO>> Post([FromBody] AddUserDTO user)
+        {   User newUser= _mapper.Map<AddUserDTO, User> (user);
+            newUser = await service.Post(newUser);
+            if (newUser != null)
             {
-                return Ok(user);
+                return Ok(_mapper.Map<User, ReturnPostUserDTO>(newUser));
             }
-
-
-
-
             return NoContent();
 
 
@@ -54,12 +47,12 @@ namespace MyShop.Controllers
         [HttpPost]
         [Route("Login")]
 
-        public async Task<ActionResult> Login([FromQuery] string email, [FromQuery] string password)
+        public async Task<ActionResult<ReturnLoginUserDTO>> Login([FromQuery] string email, [FromQuery] string password)
         {
             User user=await service.Login(email, password);
             if (user!=null)
             {
-                return Ok(user);
+                return Ok(_mapper.Map<User, ReturnLoginUserDTO>(user));
             }
 
                        
@@ -71,14 +64,14 @@ namespace MyShop.Controllers
 
         // PUT api/<UsersController>/5
         [HttpPut("{id}")]
-        public async Task<ActionResult<User> >Put(int id, [FromBody] User user)
+        public async Task<ActionResult<User> >Put(int id, [FromBody] AddUserDTO user)
 
         {
-           
-            user =await service.Put(id, user);
-            if (user != null)
+           User updateUser = _mapper.Map<AddUserDTO, User>(user);
+            updateUser =await service.Put(id, updateUser);
+            if (updateUser != null)
             {
-                return Ok(user);
+                return Ok(_mapper.Map<User, ReturnPostUserDTO>(updateUser));
             }
 
 

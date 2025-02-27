@@ -42,6 +42,14 @@ const register = async () => {
                 );
                 const data = await registerPost.json()
                 console.log(data)
+                if (data) {
+                    sessionStorage.setItem("id", data.userId)
+                    window.location.href ="Products.html"
+                }
+                else {
+                    alert("תקלה ברשום המשתמש נא נסה שנית")
+                }
+
 
             }
         }
@@ -133,7 +141,8 @@ const Login = async () => {
                     console.log(data);
 
                     sessionStorage.setItem("id", data.userId)
-                    window.location.href = "updateUser.html"
+                    window.location.href = "Products.html"
+                   /* window.location.href = "updateUser.html"*/
                 }
             }
             catch (Error) {
