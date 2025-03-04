@@ -1,4 +1,10 @@
-﻿ addEventListener("load", () => {
+﻿addEventListener("load", () => {
+   
+        if (sessionStorage.getItem('id') !== null) {
+            document.getElementById('updateUserLink').style.display = 'block';
+    }
+
+  
     let product = []
     let category =  []
     sessionStorage.setItem("category", JSON.stringify(category))
@@ -6,7 +12,7 @@
     document.querySelector("#ItemsCountText").textContent = product.length
     tmp()
     console.log("1")
-  
+
 
 }
 )
@@ -31,7 +37,7 @@ const getData = async () => {
 
 
 const filterProducts = async () => {
-    //int ? minPrice, int ? maxPrice, int ? [] categoryIds, string ? desc
+   
     let { desc, minPrice, maxPrice, categoryIds } = await getData();
     categoryIds = JSON.parse(categoryIds);
     let url = `api/Products/`
@@ -63,7 +69,7 @@ const filterProducts = async () => {
                 maxPrice: maxPrice,
 
                 categoryIds: categoryIds,
-                /* nameSearch: nameSearch,*/
+               
                 desc: desc,
             }
         });
@@ -105,16 +111,7 @@ const drawProducts = async (products) => {
     }
 }
 
-//const addToCart = (product) => {
 
-//    let products = sessionStorage.getItem("shopingBag")
-//    products = JSON.parse(products)
-//    products.push(product)
-//    sessionStorage.setItem("shopingBag", JSON.stringify(products))
-//    document.querySelector("#ItemsCountText").textContent = parseInt(document.querySelector("#ItemsCountText").textContent) + 1;
-
-
-//}
 
 const addToCart = (product) => {
     if (sessionStorage.getItem("id") == null) {
@@ -135,7 +132,7 @@ const drawTemplate = (product) => {
         let temp = document.getElementById("temp-card");
         let cloneProduct = temp.content.cloneNode(true)
 
-    cloneProduct.querySelector("img").src = "./pictures/" + product.imgPath+".jpg" ;
+    cloneProduct.querySelector("img").src = "./pictures/" + product.imgPath+".png" ;
     
     
    
@@ -220,9 +217,24 @@ const moveToUpdate = () => {
 
 const MoveToLogOut = () => {
     sessionStorage.removeItem("id");
-    /*sessionStorage.setItem("id", null)*/
-    /* window.location.href = "Products.html"*/
+  
     
     sessionStorage.setItem("shopingBag", JSON.stringify([]))
+
+    document.getElementById('updateUserLink').style.display = 'none';
+   
 }
+
+
+const moveToCart = () => {
+
+    if (sessionStorage.getItem('id') !== null) {
+        window.location.href = "ShoppingBag.html"
+    }
+    else {
+        alert("אין לך סל אינך רשום במערכת")
+    }
+}
+
+
 

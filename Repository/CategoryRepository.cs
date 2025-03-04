@@ -32,28 +32,3 @@ namespace Repositories
 }
 
 
-//using Entities;
-//using Microsoft.EntityFrameworkCore;
-//using System.Collections.Generic;
-//using System.Threading.Tasks;
-
-//namespace Repositories
-//{
-//    public class CategoryRepository : ICategoryRepository
-//    {
-//        private readonly IDbContextFactory<ProductContext> _contextFactory;
-
-//        public CategoryRepository(IDbContextFactory<ProductContext> contextFactory)
-//        {
-//            _contextFactory = contextFactory;
-//        }
-
-//        public async Task<List<Category>> Get()
-//        {
-//            using (var context = _contextFactory.CreateDbContext())
-//            {
-//                return await context.Categories.ToListAsync();
-//            }
-//        }
-//    }
-//}

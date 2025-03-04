@@ -7,19 +7,7 @@ const showRegister = () => {
     register1.classList.remove("register");
 }
 
-//const getUserDetailsFromHtml = () => {
-  
-//    Email = document.getElementById("registerEmail").value,
-//        Password = document.getElementById("registerPassword").value,
-//        FirstName = document.getElementById("registerFirstName").value,
-//        LastName = document.getElementById("registerLastName").value,
-//    alert(Email);
-//    alert(Password);
-   
-//    alert(FirstName);
-//    alert(LastName);
-//    return { Email, Password, FirstName, LastName };
-//}
+
 
 
 const getUserDetailsFromHtml = () => {
@@ -146,7 +134,7 @@ const cheakPassword = async () => {
 
 
             const dataPost = await leavel.json();
-            alert(dataPost);
+           
             updateLevel(dataPost)
         }
         catch {
@@ -173,11 +161,7 @@ const Login = async () => {
                     },
 
 
-                    //fetch(`api/Users/login?email=${currentUser.Email}& password=${currentUser.Password}`, {
-                    //             method: "POST",
-                    //             headers: {
-                    //                 'Content-Type': 'application/json'
-                    //             },
+                   
 
                     query: { Email: currentUser.Email, Password: currentUser.Password }
                 });
@@ -194,7 +178,7 @@ const Login = async () => {
 
                     sessionStorage.setItem("id", data.userId)
                     window.location.href = "Products.html"
-                   /* window.location.href = "updateUser.html"*/
+                   
                 }
             }
             catch (Error) {

@@ -91,7 +91,7 @@ td {
     font-weight: 600 !important;
 }
 
-#title {
+/*#title {
     margin: 8px 0 12px;
     padding-left: 15px;
 }
@@ -115,6 +115,41 @@ h1 {
     padding-right: 10px;
     padding-top: 19px;
 }
+*/
+
+#title {
+    text-align: center;
+    margin-top: 20px;
+}
+
+    #title p {
+        font-size: 1.2em; /* גודל טקסט קטן יותר */
+        font-weight: 600;
+        color: #4CAF50; /* צבע ירוק כמו כפתור ההזמנה */
+        margin-top: 10px;
+        text-align: center;
+        padding: 10px 0;
+        background-color: rgba(255, 255, 255, 0.8); /* רקע בהיר */
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* צללים רכים */
+    }
+
+        #title p span {
+            font-size: 1.5em; /* גודל טקסט גדול יותר */
+            font-weight: bold;
+        }
+
+#items {
+    margin-top: 20px; /* להוסיף רווח בין התגית לבין המוצרים */
+}
+
+
+
+
+
+
+
+
 
 p, fieldset {
     margin-bottom: 1em;
@@ -153,3 +188,5 @@ a.GoToCheckout.TopLink {
     display: inline-block;
     padding: 4px 10px;
 }
+
+

@@ -39,15 +39,19 @@
                         <a href="#" title="כניסה לרשום" onclick="moveToLogin()" ;" accesskey="h">LogIn</a>
                     </li>
 
-                    <li class="" data-section="myAccount">
-                        <a href="#" title="עדכון פרטי משתמש" onclick="moveToUpdate()" ;" accesskey="h">updateUser</a>
-                    </li>
-                   
+               
+
+
                     <li>
-                        <!--<a href="#" title="קניה מהירה" onclick="logOut()" >log out</a>-->
-                        <a href="#" title="MoveToLogOut" onclick="MoveToLogOut()" ;" accesskey="h">log out</a>
+                       
+                        <a href="#" title="MoveToLogOut" onclick="MoveToLogOut()" ;" accesskey="h"  >log out</a>
                     </li>
-                    
+
+
+                    <li class="up" data-section="myAccount" id="updateUserLink" style="display: none;">
+                        <a href="#" title="עדכון פרטי משתמש" onclick="moveToUpdate()" accesskey="h">updateUser</a>
+                    </li>
+
                 </ul>
             </section>
 
@@ -62,7 +66,7 @@
                 </a>
             </span>
             <div class="Checkout ">
-                <a class="goToCart" href="ShoppingBag.html">לקופה</a>
+                <a class="goToCart" href="#"   onclick="moveToCart()">לקופה</a>
             </div>
 
 

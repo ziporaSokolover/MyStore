@@ -22,18 +22,7 @@ namespace Repositories
 
         }
 
-        //var query = _ManagerDBcontext.Products.Where(Product =>
-        //  (desc == null ? true : Product.ProductName.Contains(desc))
-        //  && (minPrice == null ? true : Product.Price >= minPrice)
-        //  && (maxPrice == null ? true : Product.Price <= maxPrice)
-        //  && (categoryIds == null || categoryIds.Length == 0 ? true : categoryIds.Contains(Product.CategoryId)))
-        //  .OrderBy(Product => Product.Price)
-        //  .Include(p => p.Category);
-
-        //Console.WriteLine(query.ToQueryString());
-        //List<Product> products = await query.ToListAsync();
-        //return products;
-
+      
         public async Task<List<Product>> Get(int? minPrice, int? maxPrice, int?[] categoryIds, string? desc)
         {
 

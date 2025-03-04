@@ -101,16 +101,7 @@ namespace MyShop.Controllers
 
 
 
-        //[HttpGet("email/{email}")]
-        //public async Task<ActionResult<User>> GetUserByEmail(string email)
-        //{
-        //    var user = await service.GetUserByEmail(email);
-        //    if (user == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return Ok(user);
-        //}
+        
 
 
         [HttpGet("email/{email}")]

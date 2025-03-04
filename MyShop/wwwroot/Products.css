@@ -1,7 +1,8 @@
-﻿html, body {
-    direction:rtl;
-    margin:0;
-    padding:0;
+﻿
+html, body {
+    direction: rtl;
+    margin: 0;
+    padding: 0;
 }
 
 * {
@@ -9,20 +10,20 @@
     font-family: system-ui;
 }
 
-ul{
-    margin:0;
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
-.floatRight{
-    float:right;
-}
+    ul li {
+        display: inline-block;
+        margin-right: 10px;
+    }
 
-.QuickLinks ul li a::after {
-    content: '|';
-    margin-right: 10px;
-    margin-left: 10px;
+.floatRight {
+    float: right;
 }
-
 
 .QuickLinks ul li a::after {
     content: '|';
@@ -36,30 +37,29 @@ ul{
     margin: auto;
     text-align: center;
     font-family: arial;
-    padding:15px;
-    float:left;
-    height:550px;
-    margin:6px;
+    padding: 15px;
+    float: left;
+    height: 550px;
+    margin: 6px;
 }
 
-.img-w{
-    height:300px;
+.img-w {
+    height: 300px;
 }
 
-p.description{
-    height:65px;
+p.description {
+    height: 65px;
 }
+
 .bar::before {
-    content: 'חנות הצעצועים שלי';
+    content: 'SAVAROVSKI';
     color: white;
-    /* display: inline-block; */
     position: absolute;
-    /* margin: 0 auto; */
-    /* display: block; */
     top: 8px;
     left: 51%;
     font-family: Helvetica;
 }
+
 .price {
     color: grey;
     font-size: 22px;
@@ -77,9 +77,10 @@ p.description{
     font-size: 18px;
 }
 
-.card button:hover {
-    opacity: 0.7;
-}
+    .card button:hover {
+        opacity: 0.7;
+    }
+
 .bar {
     background-color: black;
     height: 35px;
@@ -108,6 +109,7 @@ p.description{
         font-size: 100%;
         margin-top: -1px;
     }
+
 .goToCart {
     background: #1a6461;
     font-size: 11px;
@@ -118,30 +120,27 @@ p.description{
     padding-top: 6px;
     border: 0;
     text-transform: uppercase;
-    font-family: 'azo-sans',sans-serif;
+    font-family: 'azo-sans', sans-serif;
     border-radius: 3px;
     display: inline-block;
     float: right;
-    margin:4px;
+    margin: 4px;
 }
 
 .addedToBagDialogue::before {
     background-color: #fff;
-    box-shadow: 2px -2px 2px rgba(0,0,0,.2);
+    box-shadow: 2px -2px 2px rgba(0, 0, 0, .2);
     content: " ";
     display: block;
     height: 15px;
     left: 60px;
     position: absolute;
     top: -7px;
-    -ms-transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
     vertical-align: top;
     width: 15px;
     z-index: 4999;
 }
-
 
 .QuickLinks ul li a {
     display: block;
@@ -149,12 +148,12 @@ p.description{
     font-size: 12px;
     color: white;
     font-family: Helvetica;
+    margin-top: 10px;
 }
 
 .QuickLinks ul li {
-  float:left;
+    float: left;
 }
-
 
 .Filters {
     position: absolute;
@@ -163,14 +162,13 @@ p.description{
     margin: 4px 4px;
     padding-top: 50px;
     padding-bottom: 10px;
-    position: absolute;
     z-index: 102;
     background-color: rgb(249, 249, 249);
     font-family: Arial;
     font-size: 14px;
-    min-height:100%;
-
+    min-height: 100%;
 }
+
 .nameFilter input {
     width: 70%;
     height: 24px;
@@ -179,8 +177,6 @@ p.description{
 .filterBreak {
     padding-top: 10vh;
 }
-
-
 
 .priceInputText {
     background-color: #fff;
@@ -192,8 +188,8 @@ p.description{
     border-radius: 3px;
     box-shadow: 0 1px 2px rgb(15 17 17 / 15%) inset;
     outline: 0;
-
 }
+
 .priceCurrency {
     position: absolute;
     margin-top: 6.5px;

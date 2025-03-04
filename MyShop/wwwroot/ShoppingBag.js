@@ -7,24 +7,13 @@ addEventListener("load", () => {
 }
 )
 
-//const getShoppingBagProducts = () => {
-//    let products = sessionStorage.getItem("shopingBag")
-//    products = JSON.parse(products)
-//    products.push(product)
-//    sessionStorage.setItem("shopingBag", JSON.stringify(products))
-//   /* document.querySelector("#ItemsCountText").textContent = parseInt(document.querySelector("#ItemsCountText").textContent) + 1*/
 
-
-
-
-
-//}
 const drawTemplate = (product) =>{
 
     let temp = document.getElementById("temp-row");
     let cloneProduct = temp.content.cloneNode(true)
 
-    let url =`./pictures/${product.imgPath}.jpg`;
+    let url =`./pictures/${product.imgPath}.png`;
 
 
     cloneProduct.querySelector(".image").style.backgroundImage=`url(${url})`
@@ -37,7 +26,7 @@ const drawTemplate = (product) =>{
 
 
 
-    //cloneProduct.querySelector(".description").innerText = product.decripition;
+  
     cloneProduct.querySelector(".expandoHeight").addEventListener('click', () => { deleteProductFromCart(product) })
     document.querySelector("tbody").appendChild(cloneProduct)
 
@@ -102,7 +91,7 @@ const detials = () => {
 
     let OrderSum = price;
   
-    /* OrderDate=OrderDate.toLocaleDateString()*/
+   
     return ({
          OrderSum, UserId, OrderItems,
     })
