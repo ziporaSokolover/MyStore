@@ -1,4 +1,5 @@
 ﻿using Entities;
+using Microsoft.Extensions.Logging;
 using Repositories;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,13 @@ namespace Services
     {
         IOrderRepository repository;
         IProductRepository _productsRepository;
+        private readonly ILogger<OrderService> _logger;
 
-        public OrderService(IOrderRepository repository, IProductRepository productsRepository)
+        public OrderService(IOrderRepository repository, IProductRepository productsRepository, ILogger<OrderService> logger)
         {
             this.repository = repository;
             _productsRepository = productsRepository;
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         
@@ -48,6 +51,7 @@ namespace Services
             {
 
                 order.OrderSum = sum;
+                _logger.LogError("הכניס סכום בכוחות עצמו");
                 //_logger.LogError("הכניס סכום בכוחות עצמו");
             }
 

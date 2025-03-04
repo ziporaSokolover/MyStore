@@ -173,6 +173,10 @@ namespace Repositories
             : base(options)
         {
         }
+        public ProductContext()
+           
+        {
+        }
 
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
