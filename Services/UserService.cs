@@ -53,5 +53,10 @@ namespace Services
             return result.Score;
         }
 
+
+        public async Task<User> GetUserByEmail(string email)
+        {
+            return await repository.GetUserByEmail(email);
+        }
     }
 }

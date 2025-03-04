@@ -92,19 +92,19 @@ const drawShoppgBag =async() => {
 
 const detials = () => {
     let UserId = JSON.parse(sessionStorage.getItem("id"))
-    let orderItems1 = JSON.parse(sessionStorage.getItem("basket"))
+    let orderItems1 = JSON.parse(sessionStorage.getItem("shopingBag"))
     const OrderItems = []
     orderItems1.map(t => {
-        let object = { productId: t, qantity: 1 }
+        let object = { productId: t.productId, Quentity: 1 }
 
         OrderItems.push(object)
     })
 
     let OrderSum = price;
-    let OrderDate = "2025-01-13"
+  
     /* OrderDate=OrderDate.toLocaleDateString()*/
     return ({
-        OrderDate, OrderSum, UserId, OrderItems,
+         OrderSum, UserId, OrderItems,
     })
 }
 
@@ -114,7 +114,8 @@ const placeOrder = async () => {
     if (price != 0) {
         if (sessionStorage.getItem("id")) {
             let alldetials = detials()
-            const orderss = await fetch('api/Order', {
+            console.log(alldetials) 
+            const orderss = await fetch('api/Orders', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

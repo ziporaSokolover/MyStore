@@ -99,5 +99,31 @@ namespace MyShop.Controllers
             Ok( result);
         }
 
+
+
+        //[HttpGet("email/{email}")]
+        //public async Task<ActionResult<User>> GetUserByEmail(string email)
+        //{
+        //    var user = await service.GetUserByEmail(email);
+        //    if (user == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return Ok(user);
+        //}
+
+
+        [HttpGet("email/{email}")]
+        public async Task<ActionResult<User>> GetUserByEmail(string email)
+        {
+            var user = await service.GetUserByEmail(email);
+
+            if (user != null)
+            {
+                return Ok(_mapper.Map<User, ReturnPostUserDTO>(user));
+            }
+            return Ok(user);
+        }
     }
-}
+    }
+

@@ -7,27 +7,75 @@ const showRegister = () => {
     register1.classList.remove("register");
 }
 
-const getUserDetailsFromHtml = () => {
+//const getUserDetailsFromHtml = () => {
   
-    Email = document.getElementById("registerEmail").value,
-        Password = document.getElementById("registerPassword").value,
-        FirstName = document.getElementById("registerFirstName").value,
-        LastName = document.getElementById("registerLastName").value,
-    alert(Email);
-    alert(Password);
+//    Email = document.getElementById("registerEmail").value,
+//        Password = document.getElementById("registerPassword").value,
+//        FirstName = document.getElementById("registerFirstName").value,
+//        LastName = document.getElementById("registerLastName").value,
+//    alert(Email);
+//    alert(Password);
    
-    alert(FirstName);
-    alert(LastName);
-    return { Email, Password, FirstName, LastName };
+//    alert(FirstName);
+//    alert(LastName);
+//    return { Email, Password, FirstName, LastName };
+//}
+
+
+const getUserDetailsFromHtml = () => {
+
+    Email = document.getElementById("registerEmail").value,
+    Password = document.getElementById("registerPassword").value,
+    FirstName = document.getElementById("registerFirstName").value,
+    LastName = document.getElementById("registerLastName").value
+
+    /*await cheakPassword()*/
+    const level = document.querySelector("#level")
+    const passwordScore = level.value
+
+    if (Email.indexOf('@') == -1) {
+        alert("Field Email must include @");
+        return null;
+    }
+    else if (Email.indexOf('.') == -1) {
+        alert("Field Email must include .");
+        return null;
+    }
+
+    else if (passwordScore < 3) {
+        alert("weak password")
+        return null;
+    }
+    else if (FirstName.length < 2 || FirstName.length > 20 || LastName.length < 2 || LastName.length > 20) {
+        alert("Name can be between 2 till 20 letters");
+        return null;
+    }
+    else if (!Email || !Password || !FirstName || !LastName) {
+        alert("All field are required");
+        return null;
+    }
+
+
+
+   else {
+        return { Email, Password, FirstName, LastName };
+    }
+
+
 }
+
+
 
 const register = async () => {
    /* const newUser = getAllDetilesForSignUp();*/
-    if (level.value < 3)
-        alert("Password is too weak")
-    else {
+      
+
+
+
         try {
             const user = getUserDetailsFromHtml();
+            
+
             if (user) {
                 const registerPost = await fetch('api/Users', {
                     method: 'POST',
@@ -52,11 +100,15 @@ const register = async () => {
 
 
             }
+          
+
+
+
         }
         catch (Error) {
             console.log(Error);
         }
-    }
+    
 }
     const currentUserDetailsFromHtml = () => {
         const Email = document.getElementById("loginEmail").value;

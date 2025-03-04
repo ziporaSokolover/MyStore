@@ -10,7 +10,7 @@ namespace DTO
 {
     
     public record OrderDTO(int OrderId,DateTime? OrdetDate, int OrderSum, int UserId);
-    public record OrderDTOPost(int UserId, List<OrderItemDTO> OrderItems);
+    public record OrderDTOPost(int UserId, List<OrderItemDTO> OrderItems, int OrderSum);
 
     public record OrderItemDTO( int? ProductId, int? Quantity);
 

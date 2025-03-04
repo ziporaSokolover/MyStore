@@ -10,7 +10,33 @@ const GetDataFromUpDate = () => {
         Password = document.getElementById("updatePassword").value,
         FirstName = document.getElementById("updateFirstName").value,
         LastName = document.getElementById("updateLastName").value;
+    const level = document.querySelector("#level")
+    const passwordScore = level.value
 
+    if (Email.indexOf('@') == -1) {
+        alert("Field Email must include @");
+        return null;
+    }
+    else if (Email.indexOf('.') == -1) {
+        alert("Field Email must include .");
+        return null;
+    }
+    else if (passwordScore < 3) {
+        alert("weak password")
+        return null;
+    }
+    else if (FirstName.length < 2 || FirstName.length > 20 || LastName.length < 2 || LastName.length > 20) {
+        alert("Name can be between 2 till 20 letters");
+        return null;
+    }
+    else if (!Email || !Password || !FirstName || !LastName) {
+        alert("All field are required");
+        return null;
+    }
+
+
+
+    
     if (!Email || !Password || !FirstName || !LastName) { 
         alert("all fields are requierd")
     }
@@ -19,9 +45,8 @@ const GetDataFromUpDate = () => {
 }
 
 const update = async () => {
-    if (level.value < 3)
-        alert("Password is too weak")
-    else {
+  
+  
         try {
             const id = sessionStorage.getItem("id")
             const user = GetDataFromUpDate()
@@ -49,7 +74,7 @@ const update = async () => {
 
         }
     }
-}
+
     const getPassword = () => {
         const Password = document.getElementById("updatePassword").value;
         return Password;

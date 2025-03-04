@@ -1,17 +1,19 @@
-﻿addEventListener("load", () => {
+﻿ addEventListener("load", () => {
     let product = []
     let category =  []
     sessionStorage.setItem("category", JSON.stringify(category))
     sessionStorage.setItem("shopingBag", JSON.stringify(product))
     document.querySelector("#ItemsCountText").textContent = product.length
-
-    filterProducts()
+    tmp()
     console.log("1")
-    drawCategory()
+  
 
 }
 )
-
+const tmp = async () => {
+    await drawCategory()
+    await filterProducts()
+}
 
 const getData = async () => {
     let search =
@@ -30,7 +32,6 @@ const getData = async () => {
 
 const filterProducts = async () => {
     //int ? minPrice, int ? maxPrice, int ? [] categoryIds, string ? desc
-
     let { desc, minPrice, maxPrice, categoryIds } = await getData();
     categoryIds = JSON.parse(categoryIds);
     let url = `api/Products/`
@@ -116,13 +117,18 @@ const drawProducts = async (products) => {
 //}
 
 const addToCart = (product) => {
-    let products = sessionStorage.getItem("shopingBag")
-    products = JSON.parse(products)
-    products.push(product)
-    sessionStorage.setItem("shopingBag", JSON.stringify(products))
-    document.querySelector("#ItemsCountText").textContent = parseInt(document.querySelector("#ItemsCountText").textContent) + 1
-}
+    if (sessionStorage.getItem("id") == null) {
+        alert("על מנת ליצור סל קניות עליך להירשם במערכת")
+    }
 
+    else {
+        let products = sessionStorage.getItem("shopingBag")
+        products = JSON.parse(products)
+        products.push(product)
+        sessionStorage.setItem("shopingBag", JSON.stringify(products))
+        document.querySelector("#ItemsCountText").textContent = parseInt(document.querySelector("#ItemsCountText").textContent) + 1
+    }
+}
 
 const drawTemplate = (product) => {
 
@@ -174,7 +180,7 @@ const drawTemplate = (product) => {
         }
     }
 
-const filterCategory = (category, index) => {
+const filterCategory =async (category, index) => {
    
 
     const input = document.getElementById(index)
@@ -201,7 +207,7 @@ const filterCategory = (category, index) => {
             categories.splice(i, 1);
             sessionStorage.setItem("category", JSON.stringify(categories))
         }
-        filterProducts()
+       await filterProducts()
     }
 const moveToLogin = () => {
 
@@ -212,5 +218,11 @@ const moveToUpdate = () => {
     window.location.href = "updateUser.html"
 }
 
-
+const MoveToLogOut = () => {
+    sessionStorage.removeItem("id");
+    /*sessionStorage.setItem("id", null)*/
+    /* window.location.href = "Products.html"*/
+    
+    sessionStorage.setItem("shopingBag", JSON.stringify([]))
+}
 

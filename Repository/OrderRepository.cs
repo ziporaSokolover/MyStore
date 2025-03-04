@@ -19,9 +19,6 @@ namespace Repositories
             this._ManagerDBcontext = context;
         }
 
-
-
-
         public async Task<Order> GetById(int id)
         {
             return await _ManagerDBcontext.Orders.FirstOrDefaultAsync(o=>o.OrderId==id);

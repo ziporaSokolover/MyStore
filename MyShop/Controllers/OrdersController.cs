@@ -49,16 +49,5 @@ namespace MyShop.Controllers
             return NoContent();
         }
 
-
-
-
-
-
-
-
-
-
-
-
     }
 }

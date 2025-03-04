@@ -10,6 +10,6 @@ namespace Repositories
     public interface IProductRepository
     {
         Task<List<Product>> Get(int? minPrice, int? maxPrice, int?[] categoryIds, string? desc);
-        
+        Task<Product> GetById(int id);
     }
 }

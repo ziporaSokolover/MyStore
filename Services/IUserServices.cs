@@ -22,7 +22,8 @@ namespace Services
 
 
          int cheackPassword(string password);
-       
+        Task<User> GetUserByEmail(string email);
+
 
     }
 }
