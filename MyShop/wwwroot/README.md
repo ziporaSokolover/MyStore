@@ -68,7 +68,7 @@ The project makes use of several additional tools and libraries to enhance funct
 
 ## Getting Started
 
-1. Clone the repository.
+1. Clone the repository .
 2. Open the solution in Visual Studio.
 3. Configure the `appsettings.json` file with your environment settings.
 4. Run the application.
