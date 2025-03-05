@@ -26,13 +26,12 @@ namespace TestProjectMyShop
         public async Task Get_ShouldReturnUser_WhenUserExists()
         {
             // Arrange
-            var user = new User { Email = "hhh@ggg", Password = "gfhjmhjfyhj65" };
+            var user = new User { Email = "hujjEEHTYU123456434", Password = "FXHTZDV" };
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
             // Act
             var retrievedUser = await _reposetory.Login(user.Email, user.Password);
             // var retrievedUser = await _context.Users.FindAsync(user.Id);
-
             // Assert
             Assert.NotNull(retrievedUser);
             Assert.Equal(user.Email, retrievedUser.Email);
@@ -65,6 +64,26 @@ namespace TestProjectMyShop
             // Assert
             Assert.Null(result);
         }
+        [Fact]
+        public async Task Post_ShouldAddUser_WhenUserIsValid()
+        {
+            // Arrange
+            var user = new User { Email = "newuser@example.com", Password = "securepassword", FirstName = "aa", LastName = "bb" };
+
+            // Act
+            // var addedUser = await _context.Users.AddAsync(user);
+            var addedUser = await _reposetory.Post(user);
+
+
+            //await _context.SaveChangesAsync();
+
+            // Assert
+            Assert.NotNull(addedUser);
+            Assert.Equal(user.Email, addedUser.Email);
+            Assert.True(addedUser.UserId > 0); // נניח שהמזהה יוקצה אוטומטית
+        }
+
+
     }
 
 

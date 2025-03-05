@@ -35,7 +35,7 @@ namespace Services
         {
             Order goodOrder = await CheckSum(order);
 
-            return await repository.Post(order);
+            return await repository.Post(goodOrder);
         }
 
         private async Task<Order> CheckSum(Order order)
@@ -45,6 +45,11 @@ namespace Services
             foreach (var product in order.OrderItems)
             {
                 Product goodProduct = await _productsRepository.GetById(product.ProductId);
+                if (goodProduct == null) // בדיקה אם המוצר לא נמצא
+                {
+                    _logger.LogError($"Product with ID {product.ProductId} not found");
+                    throw new Exception($"Product with ID {product.ProductId} not found");
+                }
                 sum += goodProduct.Price;
             }
             if (order.OrderSum != sum)
@@ -52,8 +57,7 @@ namespace Services
 
                 order.OrderSum = sum;
                 _logger.LogError("הכניס סכום בכוחות עצמו");
-                //_logger.LogError("הכניס סכום בכוחות עצמו");
-            }
+                          }
 
             return order;
 

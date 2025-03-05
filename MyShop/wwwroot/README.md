@@ -83,9 +83,7 @@ The project makes use of several additional tools and libraries to enhance funct
 - MailKit
 - Swagger
 
-## License
 
-This project is licensed under the MIT License.
 
 ## API Documentation
 
